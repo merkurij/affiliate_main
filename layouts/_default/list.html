@@ -3,16 +3,25 @@
 
 <head>
     <meta charset="utf-8">
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <title>Hello, AMPs</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>{{ .Params.name }} Crypto casino is gr8</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        {{ with resources.Get "css/main.css" | minify }}
+        {{ .Content | safeCSS }}
+        {{ end }}
+    </style>
 </head>
 <body>
     <header>
-        <h1>Title</h1>
+        <ul class="menu" role="menu">
+            <li class="menu-item" role="menuitem">Main</li>
+            <li class="menu-item" role="menuitem">News</li>
+            <li class="menu-item" role="menuitem">About</li>
+        </ul>
     </header>
     <section>
-       main content
+        {{ partial "posts.html" . }}
     </section>
     <footer>
         Created by team of enthusiasts.
